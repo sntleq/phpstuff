@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PHP EXERCISE 2</title>
-    <link rel="stylesheet" href="https://sntleq.github.io/activityjs/style.css">
+    <link rel="stylesheet" href="https://sntleq.github.io/phpstuff/style.css">
 </head>
 <body>
     <section>
@@ -22,41 +22,39 @@
                 <h2>EXERCISE 2</h2>
             </div>
         </div>
-        <div class="content" style="background-color: rgb(255, 215, 196); padding-bottom: 0;">
+        <div class="content">
+            <div class="bg"></div>
             <?php
                 $cities = [ 'Tokyo', 'Mexico City', 'New York City', 'Mumbai', 'Seoul',
                             'Shanghai', 'Lagos', 'Buenos Aires', 'Cairo', 'London' ];
-            ?>
-            <p>
-                <?php
-                    foreach ($cities as $city) {
-                        echo $city;
-                        if ($city != end($cities)) {
-                            echo ", ";
-                        }
+                
+                // exercise says to sort and <ul> the list twice in total
+                // so we make use of a function to avoid repeating code
+                function sort_and_ul($list) {
+                    sort($list);
+                    echo "<ul class='card'>";
+                    foreach ($list as $item) {
+                        echo "<li>$item</li>";
                     }
-                ?>
-            </p>
-            <div class="fit" style="width: 100%; flex-direction: row; justify-content: space-evenly; text-align: left;">
-                <ul>
+                    echo "</ul>";
+                }
+            ?>
+            <div class="fit flex">
+                <p class="card m btn tight">
                     <?php
-                        sort($cities);
                         foreach ($cities as $city) {
-                            echo "<li>$city</li>";
+                            echo $city;
+                            if ($city != end($cities)) {
+                                echo ", ";
+                            }
                         }
                     ?>
-                </ul>
+                </p>
                 <?php
+                    sort_and_ul($cities);
                     array_push($cities, 'Los Angeles', 'Calcutta', 'Osaka', 'Beijing');
+                    sort_and_ul($cities);
                 ?>
-                <ul>
-                    <?php
-                        sort($cities);
-                        foreach ($cities as $city) {
-                            echo "<li>$city</li>";
-                        }
-                    ?>
-                </ul>
             </div>
         </div>
     </section>
