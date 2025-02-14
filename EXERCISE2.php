@@ -28,10 +28,7 @@
                 $cities = [ 'Tokyo', 'Mexico City', 'New York City', 'Mumbai', 'Seoul',
                             'Shanghai', 'Lagos', 'Buenos Aires', 'Cairo', 'London' ];
                 
-                // exercise says to sort and <ul> the list twice in total
-                // so we make use of a function to avoid repeating code
-                function sort_and_ul($list) {
-                    sort($list);
+                function getUnorderedList($list) {
                     echo "<ul class='card'>";
                     foreach ($list as $item) {
                         echo "<li>$item</li>";
@@ -51,9 +48,11 @@
                     ?>
                 </p>
                 <?php
-                    sort_and_ul($cities);
+                    sort($cities);
+                    getUnorderedList($cities);
                     array_push($cities, 'Los Angeles', 'Calcutta', 'Osaka', 'Beijing');
-                    sort_and_ul($cities);
+                    sort($cities);
+                    getUnorderedList($cities);
                 ?>
             </div>
         </div>
